@@ -76,7 +76,7 @@
     methods: {
       removeBook(id, num, price) {
         this.sum = this.sum - num * price;
-        this.$store.dispatch('cancelBook', id)
+        this.$store.dispatch('cancelBook', id);
       }
     }
   }

@@ -22,7 +22,7 @@
         flag: false,
       }
     },
-    name: 'Home',
+    name: 'Update',
     computed: {
       ...mapGetters({
         books: 'books'

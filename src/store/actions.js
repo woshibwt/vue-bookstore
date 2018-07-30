@@ -6,5 +6,6 @@ const actions = {
   updateBook: ({commit}, book) => commit('BOOK_UPDATE', book),
   buyBook: ({commit}, book) => commit('BUY_BOOK', book),
   cancelBook: ({commit}, id) => commit('CANCEL_BUY', id),
+  getBook:({commit}, books) => commit('GET_BOOK', books),
 }
 export default actions

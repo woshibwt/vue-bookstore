@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapGetters} from 'vuex';
 
   export default {
 
@@ -33,6 +33,9 @@
         rotaIndex: -1
       }
     },
+    created:function(){
+      console.log("creat");
+    },
     methods: {
       clickCard: function (index) {
         this.rotaIndex = this.rotaIndex == index ? -1 : index;
@@ -40,7 +43,10 @@
       },
       buy(book){
         console.log(book.bookName);
-        this.$store.dispatch('buyBook',book);
+        if(this.$store.dispatch('buyBook',book).data == true)
+        {
+          this.$store.dispatch('deleteBook',book.id);
+        }
       }
     }
   }
@@ -59,8 +65,8 @@
     width:  300px;
     height: 300px;
     padding: auto;
-    /*-webkit-transform-origin: center top;*/
-    /*transform-origin: center top;*/
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-transform: rotatey(0deg) translatex(0px) translatey(0px);
@@ -68,9 +74,11 @@
     /*-webkit-transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);*/
     /*transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);*/
     transition: all 0.6s linear;
+    -webkit-transition: all 0.6s linear;
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     margin:5px;
+    z-index: 50;
   }
 
   .element-card:hover {
@@ -78,7 +86,6 @@
     transform-origin: center top;
     -webkit-transform: rotatey(30deg) translatex(0px) translatey(0px);
     transform: rotatey(30deg) translatex(0px) translatey(0px);
-    z-index: 99;
   }
 
   .element-card.open {
@@ -153,8 +160,8 @@
     font-size:16px;
     -webkit-transform:translate3d(0,0,0);
     transform:translate3d(0,0,0);
-    background:-webkit-linear-gradient(315deg,#2980b9 0%,#9b59b6 100%);
-    background:linear-gradient(135deg,#2980b9 0%,#9b59b6 100%);
+    /*background:-webkit-linear-gradient(315deg,#2980b9 0%,#9b59b6 100%);*/
+    /*background:linear-gradient(135deg,#2980b9 0%,#9b59b6 100%);*/
     filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799',endColorstr='#7db9e8',GradientType=1 );
   }
 

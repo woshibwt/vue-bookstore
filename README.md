@@ -1,4 +1,4 @@
-# vue_Book store
+# vue_Book
 
 > A Vue.js project
 > 教程地址:https://segmentfault.com/a/1190000009330778

@@ -14,7 +14,7 @@
             书单
           </Menu-item>
         </router-link>
-        <router-link to="/manger/update">
+        <router-link to="/manager/add">
           <Menu-item name="3">
             <Icon type="ios-people"></Icon>
             管理图书

@@ -1,12 +1,12 @@
 <template>
   <Carousel autoplay>
     <Carousel-item>
-      <div class="demo-carousel">
+      <div class="carousel">
         <img src="../../static/hy.jpg" alt="">
       </div>
     </Carousel-item>
     <Carousel-item>
-      <div class="demo-carousel">欢迎来到Vue书店</div>
+      <div class="carousel">欢迎来到Vue书店</div>
     </Carousel-item>
   </Carousel>
 </template>
@@ -14,7 +14,7 @@
   export default {name: 'Home'}
 </script>
 <style>
-  .demo-carousel {
+  .carousel {
     width: 100%;
     height: 600px;
     font-size: 40px;
@@ -24,6 +24,5 @@
     width: 100%;
     height: 600px;
   }
-
 </style>
 
