@@ -14,12 +14,24 @@
             书单
           </Menu-item>
         </router-link>
-        <router-link to="/manager/add">
-          <Menu-item name="3">
+        <Submenu name="3">
+          <template slot="title">
             <Icon type="ios-people"></Icon>
             管理图书
-          </Menu-item>
-        </router-link>
+          </template>
+          <MenuGroup title="操作">
+            <router-link to="/manager/add">
+              <MenuItem name="3-1">增加图书</MenuItem>
+            </router-link>
+            <router-link to="/manager/update">
+              <MenuItem name="3-2">更新图书</MenuItem>
+            </router-link>
+            <router-link to="/manager/delete">
+              <MenuItem name="3-3">删除图书</MenuItem>
+            </router-link>
+          </MenuGroup>
+        </Submenu>
+
         <router-link to="/cart">
           <Menu-item name="4">
             <Icon type="ios-cart-outline"></Icon>
@@ -28,6 +40,7 @@
           </Menu-item>
         </router-link>
       </Menu>
+      <br>
       <router-view></router-view>
     </Col>
   </Row>

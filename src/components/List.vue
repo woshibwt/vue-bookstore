@@ -10,7 +10,7 @@
       </div>
       <div class="back-facing">
         <p>纯铜是柔软的金属，表面刚切开时为红橙色带金属光泽，单质呈紫红色。延展性好，导热性和导电性高，因此在电缆和电气、电子元件是最常用的材料，也可用作建筑材料，可以组成众多种合金。</p>
-        <button @click="buy(book)">加入购物车</button>
+        <Button type="success" long @click="buy(book)">加入购物车</Button>
       </div>
     </div>
   </Col>

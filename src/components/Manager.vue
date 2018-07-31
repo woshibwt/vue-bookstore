@@ -1,12 +1,5 @@
 <template>
   <Col>
-    <router-link to="add">
-      <Tabs type="card" @click.native="bwt('dsa')">
-        <TabPane label="标签一" name="1"></TabPane>
-        <TabPane label="标签二" name="2"></TabPane>
-        <TabPane label="标签三" name="3"></TabPane>
-      </Tabs>
-    </router-link>
     <div>
       <router-view></router-view>
     </div>
