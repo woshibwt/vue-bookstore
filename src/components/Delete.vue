@@ -34,7 +34,7 @@
   }
 
   .listContainer {
-    padding-top: 30px;
+    top: 60px;
   }
 </style>
 

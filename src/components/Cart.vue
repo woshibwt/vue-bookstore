@@ -1,6 +1,6 @@
 <template>
   <div class="tab">
-    <Table border :columns="columns7" :data="allbooks"></Table>
+    <Table border :columns="columns7" :data="cart"></Table>
     <p class="money">总计：{{sum}}元</p>
   </div>
 </template>
@@ -60,14 +60,14 @@
     },
     computed: {
       ...mapGetters({
-        buyBooks: 'buyBooks'
+        cart: 'cart'
       }),
       allbooks() {
-        return this.buyBooks
+        return this.cart;
       },
       sum() {
         let allMoney = 0;
-        this.buyBooks.map(item => {
+        this.cart.map(item => {
           allMoney += item.num * item.price
         })
         return allMoney
@@ -83,11 +83,11 @@
 </script>
 <style>
   .tab {
-    margin: 40px 0;
+    margin: 60px;
   }
 
   .money {
-    margin: 40px 0;
+    margin: 40px;
   }
 </style>
 

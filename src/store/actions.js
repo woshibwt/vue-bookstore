@@ -1,11 +1,24 @@
-import {BOOK_ADD, BOOK_DELETE, BOOK_UPDATE, BUY_BOOK, CANCEL_BUY} from './types'
+import {
+  BUY_BOOK, GET_PAGE_COUNT, GET_BOOK,
+  GET_USER_BOOKS, BOOK_ADD, BOOK_UPDATE, BOOK_DELETE,
+  GET_CART, CANCEL_BUY,
+  LOGIN, REGISTER
+} from './types'
 
 const actions = {
-  addBook: ({commit}, book) => commit('BOOK_ADD', book),
-  deleteBook: ({commit}, id) => commit('BOOK_DELETE', id),
-  updateBook: ({commit}, book) => commit('BOOK_UPDATE', book),
   buyBook: ({commit}, book) => commit('BUY_BOOK', book),
+  getPageCount: ({commit}) => commit('GET_PAGE_COUNT'),
+  getBook: ({commit}, books) => commit('GET_BOOK', books),
+
+  getUserBooks: ({commit}) => commit('GET_USER_BOOKS'),
+  addBook: ({commit}, book) => commit('BOOK_ADD', book),
+  updateBook: ({commit}, book) => commit('BOOK_UPDATE', book),
+  deleteBook: ({commit}, id) => commit('BOOK_DELETE', id),
+
+  getCart: ({commit}) => commit('GET_CART'),
   cancelBook: ({commit}, id) => commit('CANCEL_BUY', id),
-  getBook:({commit}, books) => commit('GET_BOOK', books),
+
+  login: ({commit}, loginInfo) => commit('LOGIN', loginInfo),
+  register: ({commit}, userName, password, headImageUrl, college, phoneNumber) => commit('REGISTER', userName, password, headImageUrl, college, phoneNumber)
 }
 export default actions

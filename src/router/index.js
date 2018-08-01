@@ -4,16 +4,18 @@ import Home from '../components/Home.vue'
 import List from '../components/List.vue'
 import Add from '../components/Add.vue'
 import Manager from '../components/Manager.vue'
-import Detail from '../components/Detail.vue'
 import Update from '../components/Update.vue'
 import Delete from '../components/Delete.vue'
 import Cart from '../components/Cart.vue'
+import NavBar from '../components/NavBar.vue'
+import Login from '../components/Login.vue'
 
 Vue.use(Router);
 
 const routes = [
   {
-    path: '/', redirect: '/home'
+    path: '/',
+    redirect: '/home'
   },
   {
     path: '/home',
@@ -39,18 +41,21 @@ const routes = [
         path: 'delete',
         component: Delete
       }
-
     ]
-  },
-  {
-    path: '/detail/:id',
-    name: 'detail',
-    component: Detail
   },
   {
     path: '/cart',
     component: Cart
-  }
+  },
+  {
+    path: '/nav-bar',
+    name: 'nav-bar',
+    component: NavBar
+  },
+  {
+    path: '/login',
+    component: Login
+  },
 ]
 
 export default new Router({

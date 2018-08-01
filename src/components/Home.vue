@@ -1,5 +1,5 @@
 <template>
-  <Carousel autoplay>
+  <Carousel autoplay style="margin: 60px;">
     <Carousel-item>
       <div class="carousel">
         <img src="../../static/hy.jpg" alt="">
