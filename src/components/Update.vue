@@ -1,55 +1,96 @@
 <template>
-  <div class="listContainer">
-    <Col span="5" offset="1" v-for="book in books" class="text">
-      <Card>
-        <p slot="title" v-if="!flag">{{book.bookName}}</p>
-        <p slot="title" v-if="flag"><input type="text" v-model="book.bookName"></p>
-        <img class="bookimg" :src="book.imgUrl" alt="">
-        <p v-if="!flag">售价：{{book.price}}</p>
-        <p v-if="flag">售价：<input type="text" v-model="book.price"></p>
-        <Button v-if="!flag" type="info" @click="update()">修改</Button>
-        <Button v-if="flag" type="success" @click="confirm(book)">确定</Button>
-      </Card>
+  <div class="container" id="update">
+    <Col span="5" align="center" v-for="(book,index) in books">
+      <div v-bind:class="{'element-card' : true,'open' : rotaIndex == index}">
+        <div class="front-facing">
+          <p slot="title">{{book.name}}</p>
+          <img class="bookimg" :src="book.bookImageUrl" alt="">
+          <p>售价：{{book.price}}</p>
+          <Button type="info" long @click="clickCard(index)">修改</Button>
+          <!--<router-link :to="{ name:'detail',params:{id:book.id}}">详情</router-link>-->
+        </div>
+        <div class="back-facing">
+          <Form :label-width="80">
+            <FormItem label="书名" style="margin: 0">
+              <!--单向绑定-->
+              <label>
+                <Input type="text" v-model="book.name"/>
+              </label>
+            </FormItem>
+            <FormItem label="出版时间" style="margin: 0">
+              <Input type="text" v-model="book.publication"/>
+            </FormItem>
+            <FormItem label="新旧程度" style="margin: 0">
+              <Input type="text" v-model="book.howNew"/>
+            </FormItem>
+            <FormItem label="价格" style="margin: 0">
+              <Input type="text" v-model="book.price"/>
+            </FormItem>
+            <FormItem label="简介" style="margin: 0">
+              <Input type="text" v-model="book.intro"/>
+            </FormItem>
+          </Form>
+          <br><br>
+          <Button type="success" style="margin-top: 10px" @click="update(index)">完成</Button>
+        </div>
+      </div>
     </Col>
   </div>
 </template>
 <script>
-  import {mapGetters} from 'vuex'
+  import {mapGetters} from 'vuex';
 
   export default {
-    data() {
-      return {
-        flag: false,
-      }
-    },
-    name: 'Update',
+
+    name: 'update',
     computed: {
       ...mapGetters({
-        books: 'books'
+        books: 'books'  //TODO 需要修改
       })
     },
-    methods: {
-      update() {
-        this.flag = true
-      },
-      confirm(book) {
-        this.$store.dispatch('updateBook', book)
-        this.flag = false
-      },
-      cancel() {
-
-        this.flag = false
+    data() {
+      return {
+        isActive: true,
+        rotaIndex: -1,
+        pageCount: 1,
+        pageIndex: 1,
+        indexBook: {
+          id: -1,
+          intro: '',
+          name: '',
+          howNew: 1.1,
+          price: 1.1,
+          publication: '',
+          bookImageUrl: '',
+        },
       }
-    }
+    },
+    methods: {
+      clickCard: function (index) {
+        this.rotaIndex = this.rotaIndex == index ? -1 : index;
+        this.indexBook = {
+          id: this.books[index].id,
+          intro: this.books[index].intro,
+          name: this.books[index].name,
+          publication: this.books[index].publication,
+          howNew: this.books[index].howNew,
+          bookImageUrl: this.books[index].bookImageUrl,
+          price: this.books[index].price
+        }
+      },
+      update: function (index) {
+        this.rotaIndex = this.rotaIndex == index ? -1 : index;
+        this.$store.dispatch('updateBook', {
+          oldBook: this.indexBook,
+          bookId: this.books[index].id,
+          intro: this.books[index].intro,
+          name: this.books[index].name,
+          publication: this.books[index].publication,
+          howNew: this.books[index].howNew,
+          bookImageUrl: this.books[index].bookImageUrl,
+          price: this.books[index].price
+        });
+      },
+    },
   }
 </script>
-<style>
-  .bookimg {
-    height: 200px;
-  }
-
-  .listContainer {
-    padding-top: 30px;
-  }
-</style>
-
